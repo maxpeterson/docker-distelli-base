@@ -60,7 +60,9 @@ COPY pg_hba.conf /etc/postgresql/9.5/main/
 
 # Setup postgres user / role for distelli
 USER postgres
-RUN service postgresql start && createuser distelli --createdb --createrole
+RUN service postgresql start \
+    && createuser distelli --createdb --createrole \
+    && psql template1 -c "CREATE EXTENSION citext;"
 
 # Ensure the final USER statement is "USER root"
 USER root
