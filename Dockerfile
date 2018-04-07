@@ -63,4 +63,8 @@ RUN service postgresql start && createuser distelli --createdb --createrole
 # Ensure the final USER statement is "USER root"
 USER root
 
+COPY docker-entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 CMD ["/bin/bash"]
