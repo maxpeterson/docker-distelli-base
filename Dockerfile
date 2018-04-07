@@ -16,7 +16,7 @@ RUN apt-get update -y \
     && apt-get -y install build-essential checkinstall git \
     && apt-get -y install libssl-dev openssh-client openssh-server \
     && apt-get -y install curl apt-transport-https ca-certificates \
-    && apt-get -y install python-virtualenv \
+    && apt-get -y install python3-dev python-virtualenv \
     && apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common
 
 # Update the .ssh/known_hosts file:
@@ -46,7 +46,15 @@ RUN curl -o /bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.9
 
 # Install node version manager as distelli user
 USER distelli
+
+ENV NVM_DIR /home/distelli/.nvm
+ENV NODE_VERSION 6
+
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+RUN . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm use $NODE_VERSION \
+    && npm install -g bower grunt-cli
 
 # Setup postgres user / role for distelli
 USER postgres
