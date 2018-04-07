@@ -56,6 +56,8 @@ RUN . $NVM_DIR/nvm.sh \
     && nvm use $NODE_VERSION \
     && npm install -g bower grunt-cli
 
+COPY pg_hba.conf /etc/postgresql/9.5/main/
+
 # Setup postgres user / role for distelli
 USER postgres
 RUN service postgresql start && createuser distelli --createdb --createrole
