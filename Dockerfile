@@ -17,8 +17,7 @@ RUN apt-get update -y \
     && apt-get -y install libssl-dev openssh-client openssh-server \
     && apt-get -y install curl apt-transport-https ca-certificates \
     && apt-get -y install python3-dev python-virtualenv \
-    && apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common \
-    && apt-get -y install firefox
+    && apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common
 
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
