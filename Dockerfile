@@ -39,11 +39,6 @@ RUN sh -c "ssh-keyscan -H github.com bitbucket.org >> /etc/ssh/ssh_known_hosts"
 # Install Distelli CLI to coordinate the build in the container
 RUN curl -sSL https://www.distelli.com/download/client | sh 
 
-# Install gosu
-ENV GOSU_VERSION 1.9
-RUN curl -o /bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.9/gosu-$(dpkg --print-architecture)" \
-     && chmod +x /bin/gosu
-
 # Install node version manager as distelli user
 USER distelli
 
