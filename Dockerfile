@@ -21,6 +21,10 @@ RUN apt-get update -y \
     && apt-get -y install firefox
 
 
+RUN wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
+
+RUN tar -C /usr/local/bin/ -xaf /tmp/geckodriver.tar.gz geckodriver
+
 # set display port for chrome / firefox
 ENV DISPLAY=:99
 
