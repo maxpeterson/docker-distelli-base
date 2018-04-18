@@ -18,11 +18,11 @@ RUN apt-get update -y \
     && apt-get -y install curl apt-transport-https ca-certificates \
     && apt-get -y install python3-dev python-virtualenv \
     && apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common \
-    && apt-get -y install firefox
+    && apt-get -y install xvfb firefox
 
 
-RUN wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
-
+# Downlaid the latest linux64 geckodriver
+RUN wget -O /tmp/geckodriver.tar.gz $(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | python -c "import sys, json; print(next(item['browser_download_url'] for item in json.load(sys.stdin)['assets'] if 'linux64' in item.get('browser_download_url', '')))")
 RUN tar -C /usr/local/bin/ -xaf /tmp/geckodriver.tar.gz geckodriver
 
 # set display port for chrome / firefox

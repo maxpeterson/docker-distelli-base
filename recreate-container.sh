@@ -14,3 +14,7 @@ docker run -dit --name docker-build-container docker-build-base
 
 # Run bash in the container
 #docker exec -it docker-build-container /bin/bash
+
+# Run bash in the container as distelli
+#docker exec -u distelli -it docker-build-container /bin/bash
+
