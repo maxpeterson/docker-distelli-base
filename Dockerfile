@@ -12,7 +12,7 @@ WORKDIR /home/distelli
     
 # Install prerequisites. This provides me with the essential tools for building with.
 RUN apt-get update -y \
-    && apt-get -y install build-essential checkinstall \
+    && apt-get -y install build-essential checkinstall git \
     && apt-get -y install libssl-dev openssh-client openssh-server \
     && apt-get -y install curl apt-transport-https ca-certificates \
     && apt-get -y install python3-dev python-virtualenv
