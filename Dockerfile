@@ -18,7 +18,7 @@ RUN apt-get update -y \
     && apt-get -y install python3-dev python-virtualenv
 
 # Postgres
-RUN apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common
+RUN apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common postgresql-contrib postgis
 
 # Firefox
 RUN apt-get -y install xvfb firefox
@@ -54,7 +54,7 @@ COPY pg_hba.conf /etc/postgresql/9.5/main/
 USER postgres
 RUN service postgresql start \
     && createuser distelli --createdb --createrole \
-    && psql template1 -c "CREATE EXTENSION citext;"
+    && psql template1 -c "CREATE EXTENSION citext; CREATE EXTENSION postgis;"
 
 # Ensure the final USER statement is "USER root"
 USER root
