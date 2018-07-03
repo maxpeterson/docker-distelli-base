@@ -23,8 +23,8 @@ RUN apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-
 # Firefox
 RUN apt-get -y install xvfb firefox=60.0.2+build1-0ubuntu0.16.04.1
 
-# Downlaid the latest linux64 geckodriver
-RUN wget -O /tmp/geckodriver.tar.gz $(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | python -c "import sys, json; print(next(item['browser_download_url'] for item in json.load(sys.stdin)['assets'] if 'linux64' in item.get('browser_download_url', '')))")
+# Downland the linux64 geckodriver
+RUN wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
 RUN tar -C /usr/local/bin/ -xaf /tmp/geckodriver.tar.gz geckodriver
 
 # set display port for chrome / firefox
