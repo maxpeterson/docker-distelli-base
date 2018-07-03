@@ -60,6 +60,7 @@ RUN service postgresql start \
 USER root
 
 COPY docker-entrypoint.sh /usr/local/bin/
+COPY docker-run-tests.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
