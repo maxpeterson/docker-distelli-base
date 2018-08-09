@@ -21,7 +21,7 @@ RUN apt-get update -y \
 RUN apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common postgresql-contrib postgis
 
 # Firefox
-RUN apt-get -y install xvfb firefox=60.0.2+build1-0ubuntu0.16.04.1
+RUN apt-get -y install xvfb firefox
 
 # Downland the linux64 geckodriver
 RUN wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz
