@@ -37,6 +37,38 @@ docker exec -u distelli -it docker-build-container /bin/bash
 /usr/local/bin/docker-run-tests.sh
 ```
 
+#### View the display
+
+##### Using VNC
+
+You may be able to use VNC to view the firefox session using VNC https://stackoverflow.com/questions/12050021/how-to-make-xvfb-display-visible
+
+##### Take a screenshot
+
+Alternatively you can use `imagemagick` or similar to take a screenshot
+
+Connect to the container as root to install `imagemagick`
+```
+docker exec -it docker-build-container /bin/bash
+```
+
+Install `imagemagick` in the container
+```
+apt-get install imagemagick
+```
+
+Disconnect and reconnect as distelli
+
+```
+docker exec -u distelli -it docker-build-container /bin/bash
+```
+
+Capture the screen using `import` in the container
+
+```
+DISPLAY=:99 import -window root ~/project/xvfb_screenshot.png
+```
+
 ## Helper scripts
 
 
