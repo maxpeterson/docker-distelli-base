@@ -15,6 +15,7 @@ RUN apt-get update -y \
     && apt-get -y install build-essential checkinstall git \
     && apt-get -y install libcurl4-openssl-dev libssl-dev openssh-client openssh-server \
     && apt-get -y install curl apt-transport-https ca-certificates \
+    && apt-get -y install poppler-utils \
     && apt-get -y install python3-dev python-virtualenv \
     && apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common postgresql-contrib postgis \
     && apt-get -y install xvfb firefox
