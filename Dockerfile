@@ -16,13 +16,16 @@ RUN apt-get update -y \
     && apt-get -y install libcurl4-openssl-dev libssl-dev openssh-client openssh-server \
     && apt-get -y install curl apt-transport-https ca-certificates \
     && apt-get -y install poppler-utils \
-    && apt-get -y install python3-dev python-virtualenv \
+    && apt-get -y install python3-dev python3-pip python-virtualenv \
     && apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common postgresql-contrib postgis \
     && apt-get -y install xvfb firefox
 
 # Downland the linux64 geckodriver
 RUN wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux64.tar.gz \
     && tar -C /usr/local/bin/ -xaf /tmp/geckodriver.tar.gz geckodriver
+
+# Install the AWS-CLI
+RUN pip3 --no-cache-dir install --upgrade pip awscli
 
 # set display port for chrome / firefox
 ENV DISPLAY=:99
