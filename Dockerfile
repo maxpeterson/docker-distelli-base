@@ -17,6 +17,7 @@ RUN apt-get update -y \
     && apt-get -y install curl apt-transport-https ca-certificates \
     && apt-get -y install poppler-utils \
     && apt-get -y install python3-dev python3-pip python-virtualenv \
+    && apt-get -y install ca-certificates openjdk-8-jre-headless \
     && apt-get -y install postgresql libpq-dev postgresql-client postgresql-client-common postgresql-contrib postgis \
     && apt-get -y install xvfb firefox
 
