@@ -44,9 +44,7 @@ ENV NODE_VERSION 6
 
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 RUN . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm use $NODE_VERSION \
-    && npm install -g bower grunt-cli
+    && nvm install $NODE_VERSION
 
 COPY pg_hba.conf /etc/postgresql/9.5/main/
 
